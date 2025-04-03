@@ -3,7 +3,7 @@ import Food from '../../models/Food'
 import imagem from '../../assets/images/imagem.png'
 import imagem1 from '../../assets/images/image 1.png'
 import Header from '../../components/Header'
-import Restaurante from '../../components/Restaurante'
+import Restaurante2 from '../../components/Restaurante2'
 import CustomProductsList from '../../components/CustomProductsList'
 import pizza from '../../assets/images/pizza.png'
 
@@ -12,8 +12,8 @@ const menu: Food[] = [
     id: 1,
     nota: '',
     description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza,
+      'Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis.',
+    image: imagem,
     infos: [''],
     infos2: '',
     botaosmais: 'Adicionar ao carrinho',
@@ -25,8 +25,8 @@ const menu: Food[] = [
     id: 2,
     nota: '',
     description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza,
+      'Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis.',
+    image: imagem,
     infos: [''],
     infos2: '',
     botaosmais: 'Adicionar ao carrinho',
@@ -38,8 +38,8 @@ const menu: Food[] = [
     id: 3,
     nota: '',
     description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza,
+      'Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis.',
+    image: imagem,
     infos: [''],
     infos2: '',
     botaosmais: 'Adicionar ao carrinho',
@@ -51,8 +51,8 @@ const menu: Food[] = [
     id: 4,
     nota: '',
     description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza,
+      'Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis.',
+    image: imagem,
     infos: [''],
     infos2: '',
     botaosmais: 'Adicionar ao carrinho',
@@ -64,8 +64,8 @@ const menu: Food[] = [
     id: 5,
     nota: '',
     description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza,
+      'Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis.',
+    image: imagem,
     infos: [''],
     infos2: '',
     botaosmais: 'Adicionar ao carrinho',
@@ -77,8 +77,8 @@ const menu: Food[] = [
     id: 6,
     nota: '',
     description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza,
+      'Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis.',
+    image: imagem,
     infos: [''],
     infos2: '',
     botaosmais: 'Adicionar ao carrinho',
@@ -92,7 +92,7 @@ const Categories = () => {
   return (
     <>
       <Header />
-      <Restaurante />
+      <Restaurante2 />
       <CustomProductsList foods={menu} title="menu" isCategoriesPage={true} />
     </>
   )

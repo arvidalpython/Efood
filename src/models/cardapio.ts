@@ -1,4 +1,4 @@
-class Food {
+class Cardapio {
   nota: string
   description: string
   image: string
@@ -8,7 +8,6 @@ class Food {
   title: string
   id: number
   imgestrela: string
-  destino: string
 
   constructor(
     nota: string,
@@ -19,8 +18,7 @@ class Food {
     botaosmais: string,
     title: string,
     id: number,
-    imgestrela: string,
-    destino: string
+    imgestrela: string
   ) {
     this.id = id
     this.nota = nota
@@ -31,8 +29,7 @@ class Food {
     this.botaosmais = botaosmais
     this.title = title
     this.imgestrela = imgestrela
-    this.destino = destino
   }
 }
 
-export default Food
+export default Cardapio

@@ -14,9 +14,10 @@ const emBreve: Game[] = [
     image: imagem,
     infos: ['Japonesa'],
     infos2: 'Destaque da semana',
-    botaos: 'Saiba mais',
+    botaosmais: 'Saiba mais',
     title: 'Hioki Sushi',
-    imgestrela: estrela
+    imgestrela: estrela,
+    destino: '/detalhes'
   },
   {
     id: 2,
@@ -26,9 +27,10 @@ const emBreve: Game[] = [
     image: imagem1,
     infos: ['Italiana'],
     infos2: '',
-    botaos: 'Saiba mais',
+    botaosmais: 'Saiba mais',
     title: 'La Dolce Vita Trattoria',
-    imgestrela: estrela
+    imgestrela: estrela,
+    destino: '/categorias'
   },
   {
     id: 3,
@@ -38,9 +40,10 @@ const emBreve: Game[] = [
     image: imagem1,
     infos: ['Italiana'],
     infos2: '',
-    botaos: 'Saiba mais',
+    botaosmais: 'Saiba mais',
     title: 'La Dolce Vita Trattoria',
-    imgestrela: estrela
+    imgestrela: estrela,
+    destino: '/categorias'
   },
   {
     id: 4,
@@ -50,9 +53,10 @@ const emBreve: Game[] = [
     image: imagem1,
     infos: ['Italiana'],
     infos2: '',
-    botaos: 'Saiba mais',
+    botaosmais: 'Saiba mais',
     title: 'La Dolce Vita Trattoria',
-    imgestrela: estrela
+    imgestrela: estrela,
+    destino: '/categorias'
   },
   {
     id: 5,
@@ -62,9 +66,10 @@ const emBreve: Game[] = [
     image: imagem1,
     infos: ['Italiana'],
     infos2: '',
-    botaos: 'Saiba mais',
+    botaosmais: 'Saiba mais',
     title: 'La Dolce Vita Trattoria',
-    imgestrela: estrela
+    imgestrela: estrela,
+    destino: '/categorias'
   },
   {
     id: 6,
@@ -74,9 +79,10 @@ const emBreve: Game[] = [
     image: imagem1,
     infos: ['Italiana'],
     infos2: '',
-    botaos: 'Saiba mais',
+    botaosmais: 'Saiba mais',
     title: 'La Dolce Vita Trattoria',
-    imgestrela: estrela
+    imgestrela: estrela,
+    destino: '/categorias'
   }
 ]
 

@@ -1,18 +1,20 @@
-import Food from '../../models/Food'
-import Product from '../Product'
+import React from 'react'
 import { Container, List } from './styles'
+import Food from '../../models/Food'
+import CustomProduct from '../CustomProduct'
 
 export type Props = {
   title: string
   foods: Food[]
+  isCategoriesPage?: boolean // Adicione uma prop para identificar o contexto
 }
 
-const ProductsList = ({ foods }: Props) => (
+const CustomProductsList = ({ foods }: Props) => (
   <Container>
     <div className="container">
       <List>
         {foods.map((food) => (
-          <Product
+          <CustomProduct
             key={food.id}
             nota={food.nota}
             description={food.description}
@@ -21,9 +23,8 @@ const ProductsList = ({ foods }: Props) => (
             infos2={food.infos2}
             botaosmais={food.botaosmais}
             title={food.title}
-            id={food.id}
+            id={1}
             imgestrela={food.imgestrela}
-            destino={food.destino}
           />
         ))}
       </List>
@@ -31,4 +32,4 @@ const ProductsList = ({ foods }: Props) => (
   </Container>
 )
 
-export default ProductsList
+export default CustomProductsList

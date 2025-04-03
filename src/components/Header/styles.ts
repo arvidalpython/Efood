@@ -39,12 +39,20 @@ export const Precos = styled.p`
 
 export const HeaderBar = styled.header`
   background-color: ${cores.branca};
-  padding: 24px;
-  border-radius: 16px;
-  margin-bottom: 80px;
+  /* padding: 24px; */
+  width: 100%;
+  height: 186px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+
+  .container-header {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   a {
     color: ${cores.vermelho};
@@ -52,15 +60,18 @@ export const HeaderBar = styled.header`
     font-weight: bold;
   }
 
-  div {
-    display: flex;
-    align-items: center;
+  .logo {
+    max-width: 150px;
+    margin-left: 80px;
   }
 `
 
 export const Links = styled.ul`
   display: flex;
-  margin-left: 40px;
+  /* margin-left: 40px; */
+  font-family: Roboto;
+  font-weight: 900;
+  font-size: 18px;
 `
 
 export const LinkItem = styled.li`
@@ -68,8 +79,12 @@ export const LinkItem = styled.li`
 `
 export const LinkCart = styled.a`
   display: flex;
+  align-items: center;
+  font-family: Roboto;
+  font-weight: 900;
+  font-size: 18px;
 
   img {
-    margin-left: 16px;
+    margin-left: 8px;
   }
 `
