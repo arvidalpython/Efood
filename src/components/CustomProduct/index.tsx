@@ -52,7 +52,7 @@ const CustomProduct = ({
       </Nota>
     </NomeNota>
     <Descricao>{description}</Descricao>
-    <SaibaMais to="/categorias">{botaosmais}</SaibaMais>
+    <SaibaMais to="">{botaosmais}</SaibaMais>
   </Card>
 )
 
