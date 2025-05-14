@@ -27,11 +27,11 @@ export const Card = styled.div`
   }
 
   img {
-    /* width: 304px; */
-    /* height: 167px; */
-    /* top: 506px; */
-    /* left: 883px; */
-    /* object-fit: cover; */
+    /* width: 304px;
+    height: 167px;
+    top: 506px;
+    left: 883px;
+    object-fit: cover; */
   }
 `
 
@@ -82,9 +82,6 @@ export const SaibaMais = styled(Link)`
   padding: 4px 4px;
   display: inline-block;
   margin-top: 8px;
-  /* margin-right: 8px;
-  margin-left: 8px;
-  margin-bottom: 8px; */
   cursor: pointer;
   text-decoration: none;
 

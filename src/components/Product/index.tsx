@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import Tag from '../Tag'
-
+import Button from '../Button'
 import {
   Card,
   Descricao,
@@ -13,42 +13,42 @@ import {
 
 type Props = {
   id: number
-  title: string
+  titulo: string
+  tipo: string
   nota: string
-  botaosmais: string
   description: string
-  infos: string[]
-  infos2?: string
   image: string
+  infos: string[]
+  botaosmais: string
   imgestrela: string
   destino: string
+  destacado?: boolean
 }
 
 const Product = ({
-  title,
   id,
+  titulo,
+  tipo,
   nota,
-  botaosmais,
   description,
-  infos,
-  infos2,
   image,
+  infos,
+  botaosmais,
   imgestrela,
-  destino
+  destino,
+  destacado
 }: Props) => {
   return (
     <Card>
       <div className="imagem-card">
-        <img src={image} alt={title} />
+        <img src={image} alt={titulo} />
       </div>
       <Infos>
-        {id === 1 && infos2 && <Tag>{infos2}</Tag>}
-        {infos.length > 0 &&
-          infos.some((info) => info !== '') &&
-          infos.map((info) => info && <Tag key={info}>{info}</Tag>)}
+        {destacado && <Tag size="small">Destaque da semana</Tag>}
+        <Tag size="small">{tipo}</Tag>
       </Infos>
       <NomeNota>
-        <Titulo>{title}</Titulo>
+        <Titulo>{titulo}</Titulo>
         <Nota>
           {nota}
           <img src={imgestrela} alt="" />

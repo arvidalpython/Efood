@@ -2,13 +2,15 @@ import styled from 'styled-components'
 
 import { Props } from '.'
 import { cores } from '../../styles'
-import { Card } from '../Product/styles'
+import { Card, SaibaMais } from '../Product/styles'
 
 export const Container = styled.section<Omit<Props, 'title' | 'foods'>>`
   margin: 80px 171px 120px 171px;
 
   ${Card} {
-    background-color: ${cores.branca};
+    background-color: ${cores.vermelho};
+    color: ${cores.rosaEscuro};
+    padding: 8px;
   }
 `
 

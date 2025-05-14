@@ -7,95 +7,14 @@ import Restaurante2 from '../../components/Restaurante2'
 import CustomProductsList from '../../components/CustomProductsList'
 import pizza from '../../assets/images/pizza.png'
 
-const menu: Food[] = [
-  {
-    id: 1,
-    nota: '',
-    description:
-      'Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis.',
-    image: imagem,
-    infos: [''],
-    infos2: '',
-    botaosmais: 'Adicionar ao carrinho',
-    title: 'Pizza Marguerita',
-    imgestrela: '',
-    destino: ''
-  },
-  {
-    id: 2,
-    nota: '',
-    description:
-      'Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis.',
-    image: imagem,
-    infos: [''],
-    infos2: '',
-    botaosmais: 'Adicionar ao carrinho',
-    title: 'Pizza Marguerita',
-    imgestrela: '',
-    destino: ''
-  },
-  {
-    id: 3,
-    nota: '',
-    description:
-      'Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis.',
-    image: imagem,
-    infos: [''],
-    infos2: '',
-    botaosmais: 'Adicionar ao carrinho',
-    title: 'Pizza Marguerita',
-    imgestrela: '',
-    destino: ''
-  },
-  {
-    id: 4,
-    nota: '',
-    description:
-      'Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis.',
-    image: imagem,
-    infos: [''],
-    infos2: '',
-    botaosmais: 'Adicionar ao carrinho',
-    title: 'Pizza Marguerita',
-    imgestrela: '',
-    destino: ''
-  },
-  {
-    id: 5,
-    nota: '',
-    description:
-      'Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis.',
-    image: imagem,
-    infos: [''],
-    infos2: '',
-    botaosmais: 'Adicionar ao carrinho',
-    title: 'Pizza Marguerita',
-    imgestrela: '',
-    destino: ''
-  },
-  {
-    id: 6,
-    nota: '',
-    description:
-      'Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis.',
-    image: imagem,
-    infos: [''],
-    infos2: '',
-    botaosmais: 'Adicionar ao carrinho',
-    title: 'Pizza Marguerita',
-    imgestrela: '',
-    destino: ''
-  }
-]
-
-const Categories = () => {
+const Detalhes = () => {
   return (
     <>
       <Header />
       <Restaurante2 />
-      <CustomProductsList foods={menu} title="menu" isCategoriesPage={true} />
+      <CustomProductsList title="Cardápio" />
     </>
   )
 }
 
-export default Categories
+export default Detalhes

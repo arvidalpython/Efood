@@ -1,38 +1,45 @@
-class Food {
-  nota: string
-  description: string
-  image: string
-  infos: string[]
-  infos2: string
-  botaosmais: string
-  title: string
+export class Food {
   id: number
-  imgestrela: string
-  destino: string
+  titulo: string
+  destacado: boolean
+  tipo: string
+  avaliacao: string
+  descricao: string
+  capa: string
+  cardapio: Array<{
+    foto: string
+    preco: string
+    id: number
+    nome: string
+    descricao: string
+    porcao: string
+  }>
 
   constructor(
-    nota: string,
-    description: string,
-    image: string,
-    infos: string[],
-    infos2: string,
-    botaosmais: string,
-    title: string,
     id: number,
-    imgestrela: string,
-    destino: string
+    titulo: string,
+    destacado: boolean,
+    tipo: string,
+    avaliacao: string,
+    descricao: string,
+    capa: string,
+    cardapio: Array<{
+      foto: string
+      preco: string
+      id: number
+      nome: string
+      descricao: string
+      porcao: string
+    }>
   ) {
     this.id = id
-    this.nota = nota
-    this.description = description
-    this.image = image
-    this.infos = infos
-    this.infos2 = infos2
-    this.botaosmais = botaosmais
-    this.title = title
-    this.imgestrela = imgestrela
-    this.destino = destino
+    this.titulo = titulo
+    this.destacado = destacado
+    this.tipo = tipo
+    this.avaliacao = avaliacao
+    this.descricao = descricao
+    this.capa = capa
+    this.cardapio = cardapio
   }
 }
-
 export default Food
