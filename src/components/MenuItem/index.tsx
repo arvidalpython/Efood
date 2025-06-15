@@ -1,61 +1,54 @@
 import { useState } from 'react'
-import Tag from '../Tag'
 import Button from '../Button'
 import fechar from '../../assets/images/close 1.png'
-import {
-  Card,
-  Descricao,
-  Titulo,
-  Infos,
-  NomeNota,
-  Nota,
-  SaibaMais
-} from '../Product/styles'
-
 import { Item, Items, Modal, ModalContent } from './styles'
+import { Card, Descricao } from '../Product/styles'
+import { useDispatch } from 'react-redux'
 
-type Props = {
+import { add, open } from '../../store/reducers/cart'
+
+type CardapioItem = {
   id: number
-  titulo: string
-  tipo: string
-  nota: string
-  description: string
-  image: string
-  infos: string[]
-  botaosmais: string
-  imgestrela: string
+  nome: string
+  descricao: string
+  foto: string
   preco: string
   porcao: string
 }
 
-const MenuItem = ({
-  id,
-  titulo,
-  tipo,
-  nota,
-  description,
-  image,
-  infos,
-  botaosmais,
-  imgestrela,
-  preco,
-  porcao
-}: Props) => {
+type Props = {
+  food: CardapioItem
+  tipo: string
+  nota: string
+  imgestrela: string
+  botaosmais: string
+}
+
+export const formataPreco = (preco = 0) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
+}
+
+const MenuItem = ({ food, tipo, nota, imgestrela, botaosmais }: Props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(add(food))
+    dispatch(open())
+    setModalIsOpen(false)
+  }
 
   return (
     <>
       <Card>
-        <div className="imagem-card">
-          <img src={image} alt={titulo} />
-        </div>
-        <NomeNota>
-          <Titulo>{titulo}</Titulo>
-        </NomeNota>
-        <Descricao>{description}</Descricao>
+        <img src={food.foto} alt={food.nome} />
+        <Descricao>{food.descricao}</Descricao>
         <Button
           type="button"
-          title="Adicionar ao carrinho"
+          title="Mais detalhes"
           onClick={() => setModalIsOpen(true)}
           variant="secondary"
         >
@@ -65,7 +58,7 @@ const MenuItem = ({
 
       <Modal className={modalIsOpen ? 'visivel' : ''}>
         <ModalContent className="container">
-          <img src={image} alt={titulo} className="modal-image" />
+          <img src={food.foto} alt={food.nome} className="modal-image" />
           <img
             src={fechar}
             alt="ícone de fechar"
@@ -73,16 +66,17 @@ const MenuItem = ({
             onClick={() => setModalIsOpen(false)}
           />
           <div className="container-p">
-            <h4>{titulo}</h4>
-            <p>{description}</p>
-            <p>Serve: de {porcao}</p>
+            <h4>{food.nome}</h4>
+            <p>{food.descricao}</p>
+            <p>Serve: {food.porcao}</p>
             <Button
               className="button"
               type="button"
-              title="Fechar"
+              title="Adicionar ao carrinho"
               variant="secondary"
+              onClick={addToCart}
             >
-              {`Adicionar ao carrinho - R$ ${preco}`}
+              {`Adicionar ao carrinho - R$ ${food.preco}`}
             </Button>
           </div>
         </ModalContent>

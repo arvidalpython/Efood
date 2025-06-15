@@ -77,12 +77,13 @@ export const Links = styled.ul`
 export const LinkItem = styled.li`
   margin-right: 16px;
 `
-export const LinkCart = styled.a`
+export const CartButton = styled.a`
   display: flex;
   align-items: center;
   font-family: Roboto;
   font-weight: 900;
   font-size: 18px;
+  cursor: pointer;
 
   img {
     margin-left: 8px;

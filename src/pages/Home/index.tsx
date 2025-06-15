@@ -1,6 +1,7 @@
 import Banner from '../../components/Banner'
 import ProductsList from '../../components/ProductsList'
-import { useEffect, useState } from 'react'
+import { useGetFeatureRestaurantsQuery } from '../../services/api'
+import { on } from 'events'
 
 export interface GalleryItem {
   type: 'image' | 'video'
@@ -24,22 +25,33 @@ export type Food2 = {
   avaliacao: string
   descricao: string
   capa: string
-  cardapio: GalleryItem[]
+  cardapio: Array<{
+    id: number
+    nome: string
+    descricao: string
+    foto: string
+    preco: string
+    porcao: string
+  }>
+}
+
+export const formataPreco = (preco = 0) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
 }
 
 const Home = () => {
-  const [restaurantes, setRestaurantes] = useState<Food2[]>([])
+  const { data: onSaleFoods } = useGetFeatureRestaurantsQuery()
 
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setRestaurantes(res))
-  }, [])
-
+  if (!onSaleFoods) {
+    return <h4>Carregando</h4>
+  }
   return (
     <>
       <Banner />
-      <ProductsList foods={restaurantes} title="Destaques da semana" />
+      <ProductsList foods={onSaleFoods} title="Destaques da semana" />
       {/* <ProductsList
         foods={restaurantes.filter((item) => !item.destacado)}
         title="Nossos restaurantes"
