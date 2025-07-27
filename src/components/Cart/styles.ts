@@ -1,7 +1,12 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
+import Button from '../Button'
 
 import imgfechar from '../../assets/images/lixo.png'
+
+type InputGroupProps = {
+  maxWidth?: string
+}
 
 export const Overlay = styled.div`
   position: absolute;
@@ -96,4 +101,31 @@ export const CartItem = styled.li`
     padding: 0;
     display: block;
   }
+`
+export const Row = styled.div`
+  display: flex;
+  column-gap: 32px;
+`
+export const InputGroup = styled.div<InputGroupProps>`
+  flex: auto;
+
+  max-width: ${(props) => props.maxWidth || 'auto'};
+
+  label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  input {
+    background-color: ${cores.rosaEscuro};
+    height: 32px;
+    padding: 0 8px;
+    border: none;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+`
+export const BotaoCarrinho = styled(Button)`
+  margin-bottom: 8px;
 `

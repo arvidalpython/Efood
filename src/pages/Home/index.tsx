@@ -1,7 +1,6 @@
 import Banner from '../../components/Banner'
 import ProductsList from '../../components/ProductsList'
 import { useGetFeatureRestaurantsQuery } from '../../services/api'
-import { on } from 'events'
 
 export interface GalleryItem {
   type: 'image' | 'video'
