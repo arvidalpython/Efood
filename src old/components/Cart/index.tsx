@@ -13,11 +13,11 @@ import { RootReducer } from '../../store/'
 import { useDispatch, useSelector } from 'react-redux'
 import { close, remove } from '../../store/reducers/cart'
 import Formulario from '../Formulario'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { usePurchaseMutation } from '../../services/api'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 export const formataPreco = (preco = 0) => {
   return new Intl.NumberFormat('pt-BR', {
@@ -32,17 +32,9 @@ const Cart = () => {
   const nextStep = () => setStep((prev) => prev + 1)
   const prevStep = () => setStep((prev) => prev - 1)
 
-  const [purchase, { isLoading, isError, data, isSuccess }] =
-    usePurchaseMutation()
+  const [purchase, { isLoading, isError, data }] = usePurchaseMutation()
 
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    if (isOpen) {
-      setStep(1) // Reset para o step 1 ao abrir o carrinho
-      form.resetForm() // Opcional: resetar o formulário
-    }
-  }, [isOpen])
 
   const form = useFormik({
     initialValues: {
@@ -68,7 +60,7 @@ const Cart = () => {
         .min(9, 'O CEP precisa ter pelo menos 9 caracteres')
         .max(9, 'O CEP precisa ter no máximo 9 caracteres')
         .required('Campo obrigatório'),
-      numero: Yup.number().required('Campo obrigatório'),
+      numero: Yup.number().required('Campo obrigatório').positive(),
       complemento: Yup.string(),
       nomecartao: Yup.string()
         .required('Campo obrigatório')
@@ -77,57 +69,52 @@ const Cart = () => {
         .required('Campo obrigatório')
         .min(16, 'O número precisa ter pelo menos 16 caracteres')
         .max(16, 'O número precisa ter no máximo 16 caracteres'),
-      cvv: Yup.string()
+      cvv: Yup.number()
         .required('Campo obrigatório')
-        // .positive()
+        .positive()
         .min(3, 'O número precisa ter pelo menos 3 caracteres')
         .max(3, 'O número precisa ter no máximo 3 caracteres'),
-      mesvenc: Yup.string()
+      mesvenc: Yup.number()
         .required('Campo obrigatório')
-        // .positive()
+        .positive()
         .min(2, 'O mês precisa ter pelo menos 2 caracteres')
         .max(2, 'O mês precisa ter no máximo 2 caracteres'),
-      anovenc: Yup.string()
+      anovenc: Yup.number()
         .required('Campo obrigatório')
-        // .positive()
+        .positive()
         .min(4, 'O ano precisa ter pelo menos 4 caracteres')
         .max(4, 'O ano precisa ter no máximo 4 caracteres')
     }),
-    onSubmit: async (values) => {
-      if (step === 2 && form.isValid) {
-        nextStep()
-      } else if (step === 3 && form.isValid) {
-        await purchase({
-          delivery: {
-            receiver: values.destinatario,
-            address: {
-              description: values.endereco,
-              city: values.cidade,
-              zipCode: values.cep,
-              number: values.numero,
-              complement: values.complemento
+    onSubmit: (values) => {
+      purchase({
+        delivery: {
+          receiver: values.destinatario,
+          address: {
+            description: values.endereco,
+            city: values.cidade,
+            zipCode: values.cep,
+            number: values.numero,
+            complement: values.complemento
+          }
+        },
+        payment: {
+          card: {
+            name: values.nomecartao,
+            number: values.ncartao,
+            code: values.cvv,
+            expires: {
+              month: Number(values.mesvenc),
+              year: Number(values.anovenc)
             }
-          },
-          payment: {
-            card: {
-              name: values.nomecartao,
-              number: values.ncartao,
-              code: values.cvv,
-              expires: {
-                month: Number(values.mesvenc),
-                year: Number(values.anovenc)
-              }
-            }
-          },
-          products: [
-            {
-              id: 1,
-              price: 10
-            }
-          ]
-        })
-        nextStep()
-      }
+          }
+        },
+        products: [
+          {
+            id: 1,
+            price: 10
+          }
+        ]
+      })
     }
   })
 
@@ -290,7 +277,7 @@ const Cart = () => {
                 </>
               </Formulario>
               <BotaoCarrinho
-                type="submit"
+                type="button"
                 title="Saiba Mais"
                 variant="secondary"
                 onClick={nextStep}
@@ -383,10 +370,12 @@ const Cart = () => {
                   </Row>
                 </>
               </Formulario>
+              {/* <button type="submit">Finalizar pagamento</button> */}
               <BotaoCarrinho
                 type="submit"
                 title="Saiba Mais"
                 variant="secondary"
+                onClick={nextStep}
               >
                 Finalizar pagamento
               </BotaoCarrinho>
@@ -438,7 +427,7 @@ const Cart = () => {
                 type="button"
                 title="Saiba Mais"
                 variant="secondary"
-                onClick={closeCart}
+                onClick={form.handleSubmit}
               >
                 Concluir
               </BotaoCarrinho>

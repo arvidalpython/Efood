@@ -42,26 +42,20 @@ export const formataPreco = (preco = 0) => {
 }
 
 const Home = () => {
-  const {
-    data: onSaleFoods,
-    isLoading,
-    isError
-  } = useGetFeatureRestaurantsQuery()
+  const { data: onSaleFoods } = useGetFeatureRestaurantsQuery()
 
-  if (isLoading) {
-    return <h4>Carregando...</h4>
+  if (!onSaleFoods) {
+    return <h4>Carregando</h4>
   }
-
-  if (isError || !onSaleFoods) {
-    return <h4>Erro ao carregar restaurantes</h4>
-  }
-
   return (
     <>
       <Banner />
       <ProductsList foods={onSaleFoods} title="Destaques da semana" />
+      {/* <ProductsList
+        foods={restaurantes.filter((item) => !item.destacado)}
+        title="Nossos restaurantes"
+      /> */}
     </>
   )
 }
-
 export default Home
